@@ -1,6 +1,5 @@
 <?php
 
-// src/Form/ProjetType.php
 namespace App\Form;
 
 use App\Entity\Projet;
@@ -28,7 +27,7 @@ class ProjetFormType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
-            ->add('save', SubmitType::class, ['label' => 'Créer le Projet'])
+
         ;
     }
 

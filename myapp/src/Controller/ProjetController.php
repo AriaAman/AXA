@@ -74,13 +74,24 @@ class ProjetController extends AbstractController
             throw $this->createNotFoundException('Projet non trouvé.');
         }
 
-        // Ici, vous pouvez gérer le formulaire d'édition...
+        $form = $this->createForm(ProjetFormType::class, $projet);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Le projet a été modifié avec succès !');
+
+            return $this->redirectToRoute('projets_liste', ['id' => $id]);
+        }
 
         return $this->render('projet/edit.html.twig', [
             'projet' => $projet,
-            // 'form' => $form->createView(), // Si vous avez un formulaire
+            'form' => $form->createView(),
         ]);
     }
+
 
 
     /**
@@ -116,7 +127,10 @@ class ProjetController extends AbstractController
         $entityManager->remove($projet);
         $entityManager->flush();
 
-        return new Response(null, Response::HTTP_NO_CONTENT);
+        $this->addFlash('success', 'Le projet a été supprimé avec succès !');
+
+        return $this->redirectToRoute('projets_liste');
     }
+
 }
 

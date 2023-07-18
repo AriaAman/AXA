@@ -1,4 +1,3 @@
-{# templates/projet/index.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Liste des Projets{% endblock %}
@@ -11,13 +10,27 @@
             <li>
                 <h2><a href="{{ path('projet_details', {'id': projet.id}) }}">{{ projet.name }}</a></h2>
                 <p>{{ projet.description }}</p>
-                {# Autres informations sur le projet ici #}
+                <p>{{ projet.startDate|date('Y-m-d') }}</p>
+                <p>{{ projet.endTime|date('Y-m-d') }}</p>
+                <p>
+                    {% for user in projet.users %}
+                        {{ user.username }}{# Ou une autre propriété que vous voulez afficher #}
+                        {# Ajoutons une virgule après chaque utilisateur sauf le dernier #}
+                        {% if not loop.last %}, {% endif %}
+                    {% else %}
+                        Pas d'utilisateurs assignés.
+                    {% endfor %}
+                </p>
 
-                {# Bouton pour modifier le projet #}
+
                 <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-primary">Modifier</a>
 
-                {# Bouton pour supprimer le projet (faites attention à la confirmation !) #}
-                <a href="{{ path('projet_suppression', {'id': projet.id}) }}" class="btn btn-danger">Supprimer</a>
+                <form method="post" action="{{ path('projet_suppression', {id: projet.id}) }}"
+                      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce projet?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ projet.id) }}">
+                    <button class="btn btn-danger">Supprimer</button>
+                </form>
             </li>
         {% else %}
             <li>Aucun projet trouvé.</li>
