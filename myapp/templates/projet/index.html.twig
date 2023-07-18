@@ -1,0 +1,26 @@
+{# templates/projet/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Projets{% endblock %}
+
+{% block body %}
+    <h1>Liste des Projets</h1>
+
+    <ul>
+        {% for projet in projets %}
+            <li>
+                <h2><a href="{{ path('projet_details', {'id': projet.id}) }}">{{ projet.name }}</a></h2>
+                <p>{{ projet.description }}</p>
+                {# Autres informations sur le projet ici #}
+
+                {# Bouton pour modifier le projet #}
+                <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-primary">Modifier</a>
+
+                {# Bouton pour supprimer le projet (faites attention à la confirmation !) #}
+                <a href="{{ path('projet_suppression', {'id': projet.id}) }}" class="btn btn-danger">Supprimer</a>
+            </li>
+        {% else %}
+            <li>Aucun projet trouvé.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

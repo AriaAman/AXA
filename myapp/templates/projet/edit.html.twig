@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Projet{% endblock %}
+
+{% block body %}
+    <h1>{{ projet.name }}</h1>
+    <p>{{ projet.description }}</p>
+
+    {# Autres détails sur le projet ici #}
+
+    {# Bouton pour modifier le projet #}
+    <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-primary">Modifier le Projet</a>
+
+{% endblock %}

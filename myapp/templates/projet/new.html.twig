@@ -1,0 +1,16 @@
+{# templates/projet/new.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Projet{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau projet</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <button type="submit" class="btn btn-success">
+        {{ button_label|default('Créer le Projet') }}
+    </button>
+    {{ form_end(form) }}
+{% endblock %}
