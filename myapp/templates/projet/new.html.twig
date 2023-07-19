@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Créer un nouveau projet</h1>
-
+<div class="border border-2 rounded-4 bg-light justify-content-center p-4 m-4 w-50">
     {{ form_start(form) }}
     {{ form_widget(form) }}
 
@@ -12,4 +12,5 @@
         {{ button_label|default('Créer le Projet') }}
     </button>
     {{ form_end(form) }}
+</div>
 {% endblock %}

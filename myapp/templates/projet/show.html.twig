@@ -3,8 +3,12 @@
 {% block title %}Projet Details{% endblock %}
 
 {% block body %}
-    <h1>{{ projet.name }}</h1>
-    <p>{{ projet.description }}</p>
-    <p>Start Date: {{ projet.startDate|date('Y-m-d') }}</p>
-    <p>End Time: {{ projet.endTime|date('Y-m-d') }}</p>
+<div class="card">
+    <div class="card-body">
+        <h1>{{ projet.name }}</h1>
+        <p>{{ projet.description }}</p>
+        <p>Start Date: {{ projet.startDate|date('Y-m-d') }}</p>
+        <p>End Time: {{ projet.endTime|date('Y-m-d') }}</p>
+    </div>
+</div>
 {% endblock %}

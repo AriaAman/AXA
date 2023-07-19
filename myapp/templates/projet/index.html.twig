@@ -4,24 +4,25 @@
 
 {% block body %}
     <h1>Liste des Projets</h1>
-
+<div class="card">
+    <div class="card-body">
     <ul>
         {% for projet in projets %}
             <li>
-                <h2><a href="{{ path('projet_details', {'id': projet.id}) }}">{{ projet.name }}</a></h2>
+                <h2>
+                    <a href="{{ path('projet_details', {'id': projet.id}) }}">{{ projet.name }}</a>
+                </h2>
                 <p>{{ projet.description }}</p>
                 <p>{{ projet.startDate|date('Y-m-d') }}</p>
                 <p>{{ projet.endTime|date('Y-m-d') }}</p>
                 <p>
                     {% for user in projet.users %}
-                        {{ user.username }}{# Ou une autre propriété que vous voulez afficher #}
-                        {# Ajoutons une virgule après chaque utilisateur sauf le dernier #}
+                        {{ user.username }}
                         {% if not loop.last %}, {% endif %}
                     {% else %}
                         Pas d'utilisateurs assignés.
                     {% endfor %}
                 </p>
-
 
                 <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-primary">Modifier</a>
 
@@ -36,4 +37,6 @@
             <li>Aucun projet trouvé.</li>
         {% endfor %}
     </ul>
+    </div>
+</div>
 {% endblock %}
