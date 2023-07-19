@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Liste des Projets</h1>
-<div class="card">
-    <div class="card-body">
+
     <ul>
         {% for projet in projets %}
+        <div class="card">
+            <div class="card-body">
             <li>
                 <h2>
                     <a href="{{ path('projet_details', {'id': projet.id}) }}">{{ projet.name }}</a>
@@ -33,10 +34,11 @@
                     <button class="btn btn-danger">Supprimer</button>
                 </form>
             </li>
+            </div>
+        </div>
         {% else %}
             <li>Aucun projet trouvé.</li>
         {% endfor %}
     </ul>
-    </div>
-</div>
+
 {% endblock %}
