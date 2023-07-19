@@ -15,7 +15,7 @@ Pour mettre en place le projet, suivez les étapes suivantes :
 php bin/console doctrine:migrations:migrate
 ```
 
-Si vous ajoutez une nouvelle entité ou modifiez une entité existante, assurez-vous de générer une nouvelle migration :
+Pour ajouter la table projets faite la commande suivante :
 
 ```php
 php bin/console doctrine:migrations:diff
@@ -32,7 +32,3 @@ Les utilisateurs peuvent s'inscrire et se connecter. Ces fonctionnalités ont é
 ### Gestion des projets
 
 Les utilisateurs peuvent créer des projets, leur attribuer un nom, une description, une date de début et une date de fin. Ils peuvent également inviter d'autres utilisateurs à rejoindre leurs projets en tant que membres. Cette fonctionnalité n'est pas couverte par les migrations et nécessite une migration diff.
-
-## Remarques finales
-
-Ce projet est encore en cours de développement et pourrait nécessiter des améliorations supplémentaires pour satisfaire pleinement aux exigences du test technique. 
